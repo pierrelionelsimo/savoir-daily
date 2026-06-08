@@ -1,0 +1,7 @@
+{
+  "name": "savoir_daily",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
