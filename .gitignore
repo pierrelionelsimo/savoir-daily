@@ -68,3 +68,33 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Dependencies
+node_modules/
+
+# Build output
+www/
+dist/
+
+# Capacitor
+android/
+ios/
+
+# Environment (si tu mets des vraies clés)
+src/environments/environment.prod.ts
+
+# Ionic/Angular cache
+.angular/
+.ionic/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
