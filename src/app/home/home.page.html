@@ -1,20 +1,94 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <div class="screen">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <!-- Header -->
+    <div class="top-bar">
+      <div>
+        <div class="app-name" (press)="goToAdmin()" (press.time)="3000">
+          Savoir Daily
+        </div>
+        <div class="date-sub">{{ today }}</div>
+      </div>
+      <div class="nav-links">
+        <a routerLink="/history" class="nav-btn">Historique</a>
+        <a routerLink="/about" class="nav-btn">À propos</a>
+      </div>
+      <button class="theme-btn" (click)="toggleTheme()">
+      {{ themeService.isDark() ? '☀️' : '🌙' }}
+      </button>
+    </div>
+    <!-- Loading -->
+    <div class="center" *ngIf="loading">
+      <ion-spinner name="dots" color="light"></ion-spinner>
+    </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <!-- Liste des citations -->
+    <div class="feed" *ngIf="!loading">
+      <div class="section-label">{{ citations.length }} connaissances aujourd'hui</div>
+
+      <div
+        class="card"
+        *ngFor="let c of citations; let i = index"
+        (click)="openDetail(c)"
+      >
+        <div class="card-top">
+          <span class="emoji">{{ c.emoji }}</span>
+          <span class="domain">{{ c.domaine }}</span>
+          <span class="type-badge" [attr.data-type]="c.type">{{ typeLabel(c.type) }}</span>
+        </div>
+
+        <p class="knowledge">"{{ c.connaissance }}"</p>
+
+        <div class="card-bottom">
+          <span class="author">{{ c.auteur }}</span>
+          <button class="share-inline" (click)="share(c, $event)">↗</button>
+        </div>
+      </div>
+
+      <div class="empty" *ngIf="citations.length === 0">
+        Aucune citation disponible aujourd'hui.
+      </div>
+    </div>
+
+    <!-- Footer signature -->
+    <div class="footer">
+      <span>Savoir Daily</span>
+    </div>
+
   </div>
+
+  <!-- Modale détail -->
+  <div class="overlay" *ngIf="selected" (click)="closeDetail()">
+    <div class="detail-card" (click)="$event.stopPropagation()">
+      <button class="close-btn" (click)="closeDetail()">✕</button>
+
+      <div class="detail-top">
+        <span class="emoji-lg">{{ selected.emoji }}</span>
+        <div>
+          <div class="detail-domain">{{ selected.domaine }}</div>
+          <div class="detail-type">{{ typeLabel(selected.type) }}</div>
+        </div>
+      </div>
+
+      <p class="detail-knowledge">"{{ selected.connaissance }}"</p>
+
+      <div class="detail-resume">{{ selected.resume }}</div>
+
+      <div class="detail-meta">
+        <span class="author">{{ selected.auteur }}</span>
+        <span class="dot">·</span>
+        <span class="year">{{ selected.annee }}</span>
+      </div>
+
+      <div class="detail-actions">
+        <button class="btn-source" (click)="openSource()" [disabled]="!selected.lien || selected.lien === '#'">
+          Lire l'œuvre complète ↗
+        </button>
+        <button class="btn-share" (click)="share(selected, $event)">
+          Partager
+        </button>
+      </div>
+    </div>
+  </div>
+
 </ion-content>

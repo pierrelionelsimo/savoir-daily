@@ -1,0 +1,104 @@
+ion-content { background: var(--bg); }
+
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 32px;
+
+  .lock-icon { font-size: 3rem; margin-bottom: 16px; }
+
+  h1 {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    color: #e8eaf0;
+    margin: 0 0 8px;
+  }
+
+  .subtitle {
+    font-size: 0.82rem;
+    color: #7880a0;
+    margin: 0 0 48px;
+    font-family: 'Inter', monospace;
+    letter-spacing: 1px;
+  }
+
+  .btn-google {
+    width:70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #fff;
+    color: #1a1a2e;
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    &:disabled { opacity: 0.5; }
+  }
+
+  .separator {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin: 24px 0 16px;
+    .sep-line { flex: 1; height: 1px; background: #252a3d; }
+    .sep-text  { font-size: 0.75rem; color: #7880a0; font-family: monospace; }
+  }
+
+  .btn-toggle {
+    background: transparent;
+    border: none;
+    color: #7880a0;
+    font-size: 0.82rem;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-bottom: 20px;
+  }
+
+  .email-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .input {
+    background: #13161f;
+    border: 1px solid #252a3d;
+    border-radius: 12px;
+    padding: 16px 18px;
+    color: #e8eaf0;
+    font-size: 0.95rem;
+    width: 100%;
+    outline: none;
+    &:focus { border-color: #5b8dee; }
+  }
+
+  .btn-login {
+    background: #5b8dee;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    &:disabled { opacity: 0.5; }
+  }
+
+  .error {
+    color: #ff6b6b;
+    font-size: 0.82rem;
+    text-align: center;
+    margin-top: 16px;
+  }
+}
+
+

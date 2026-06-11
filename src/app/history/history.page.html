@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">Historique</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="list">
+
+    <div class="center" *ngIf="loading">
+      <ion-spinner name="dots" color="light"></ion-spinner>
+    </div>
+
+    <ng-container *ngFor="let bundle of bundles">
+      <div class="day-label">{{ bundle.date }}</div>
+      <div class="item" *ngFor="let c of bundle.citations">
+        <div class="item-top">
+          <span class="emoji">{{ c.emoji }}</span>
+          <span class="domain">{{ c.domaine }}</span>
+          <span class="date">{{ c.dateGeneration }}</span>
+        </div>
+        <p class="knowledge">"{{ c.connaissance }}"</p>
+        <span class="author">{{ c.auteur }}</span>
+      </div>
+    </ng-container>
+
+    <div class="empty" *ngIf="!loading && bundles.length === 0">
+      Aucun historique disponible.
+    </div>
+
+  </div>
+</ion-content>

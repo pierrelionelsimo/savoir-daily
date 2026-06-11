@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dashboard Admin</ion-title>
+    <ion-buttons slot="end">
+      <button class="logout-btn" (click)="authService.logout()">
+        Déconnexion
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="dashboard">
+
+    <div class="welcome">Bonjour  — Savoir Daily</div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">📱</div>
+        <div class="stat-value">{{ stats.totalUsers }}</div>
+        <div class="stat-label">Installations</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">💡</div>
+        <div class="stat-value">{{ stats.totalCitations }}</div>
+        <div class="stat-label">Citations générées</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🔔</div>
+        <div class="stat-value">{{ stats.tokensActifs }}</div>
+        <div class="stat-label">Tokens FCM</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📅</div>
+        <div class="stat-value small">{{ stats.lastGeneration }}</div>
+        <div class="stat-label">Dernière génération</div>
+      </div>
+    </div>
+
+    <!-- Actions admin -->
+    <div class="actions-row">
+      <button class="btn-refresh" (click)="refresh()" [disabled]="loading">
+        🔄 Actualiser
+      </button>
+      <button class="btn-generate" (click)="generateNow()" [disabled]="generating">
+        <ion-spinner name="dots" *ngIf="generating"></ion-spinner>
+        <span *ngIf="!generating">⚡ Générer maintenant</span>
+      </button>
+    </div>
+
+    <p class="generate-msg" *ngIf="generateMessage">{{ generateMessage }}</p>
+
+    <div class="section-title">Citations récentes</div>
+
+    <div class="loading-box" *ngIf="loading">Chargement...</div>
+
+    <div class="citation-list" *ngIf="!loading">
+      <div class="citation-item" *ngFor="let c of recentCitations">
+        <div class="ci-top">
+          <span class="ci-emoji">{{ c.emoji }}</span>
+          <span class="ci-domain">{{ c.domaine }}</span>
+          <span class="ci-date">{{ c.dateGeneration }}</span>
+        </div>
+        <p class="ci-text">"{{ c.connaissance }}"</p>
+        <span class="ci-author">{{ c.auteur }}</span>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

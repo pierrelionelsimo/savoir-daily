@@ -1,0 +1,35 @@
+<ion-content>
+  <div class="login-screen">
+
+    <div class="lock-icon">👨🏾‍⚖️</div>
+    <h1>Admin</h1>
+    <p class="subtitle">Savoir Daily Dashboard</p>
+
+    <button class="btn-google" (click)="loginGoogle()" [disabled]="loading">
+      <img src="assets/icon/google-icon.svg" alt="Google" width="20" />
+      {{ loading ? 'Connexion...' : 'Continuer avec Google' }}
+    </button>
+
+    <div class="separator">
+      <span class="sep-line"></span>
+      <span class="sep-text">ou</span>
+      <span class="sep-line"></span>
+    </div>
+
+    <button class="btn-toggle" (click)="showEmailForm = !showEmailForm">
+      Connexion par email
+    </button>
+
+    <div class="email-form" *ngIf="showEmailForm">
+      <input type="email" placeholder="Email" [(ngModel)]="email" class="input" />
+      <input type="password" placeholder="Mot de passe" [(ngModel)]="password"
+             class="input" (keyup.enter)="loginEmail()" />
+      <button class="btn-login" (click)="loginEmail()" [disabled]="loading">
+        Se connecter
+      </button>
+    </div>
+
+    <p class="error" *ngIf="error">{{ error }}</p>
+
+  </div>
+</ion-content>

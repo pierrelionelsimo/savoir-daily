@@ -35,3 +35,36 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+
+* { font-family: 'Inter', sans-serif; }
+
+// ── Thème sombre (défaut) ──────────────────────────────────
+body.dark {
+  --bg:       #0c0e14;
+  --surface:  #13161f;
+  --card:     #1a1e2b;
+  --border:   #252a3d;
+  --text:     #e8eaf0;
+  --muted:    #7880a0;
+  --accent:   #5b8dee;
+  --gold:     #f0c040;
+  --danger:   #ff6b6b;
+}
+
+// ── Thème clair ────────────────────────────────────────────
+body.light {
+  --bg:       #f4f5f9;
+  --surface:  #ffffff;
+  --card:     #ffffff;
+  --border:   #e0e4f0;
+  --text:     #1a1e2b;
+  --muted:    #6b7280;
+  --accent:   #3b6fd4;
+  --gold:     #d4940a;
+  --danger:   #e53935;
+}
+
+ion-content { --background: var(--bg); }
+ion-toolbar  { --background: var(--surface); --border-color: var(--border); }
+ion-title    { color: var(--text); }

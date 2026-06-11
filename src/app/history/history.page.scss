@@ -1,0 +1,75 @@
+ion-content { background: var(--bg); }
+ion-toolbar  { --background: #13161f; --border-color: #252a3d; }
+
+.list {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.day-label {
+  font-size: 0.68rem;
+  color: #7880a0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: monospace;
+  padding: 8px 4px 4px;
+}
+
+.item {
+  background: #13161f;
+  border: 1px solid #252a3d;
+  border-radius: 16px;
+  padding: 20px;
+
+  .item-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+
+    .emoji  { font-size: 1.2rem; }
+    .domain {
+      font-size: 0.72rem;
+      color: #5b8dee;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: 'Inter', monospace;
+      flex: 1;
+    }
+    .date {
+      font-size: 0.7rem;
+      color: #7880a0;
+      font-family: 'Inter', monospace;
+    }
+  }
+
+  .knowledge {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #e8eaf0;
+    margin: 0 0 10px;
+  }
+
+  .author {
+    font-size: 0.78rem;
+    color: #f0c040;
+    font-weight: 600;
+  }
+}
+
+.empty {
+  color: #7880a0;
+  font-style: italic;
+  text-align: center;
+  padding: 40px 0;
+}

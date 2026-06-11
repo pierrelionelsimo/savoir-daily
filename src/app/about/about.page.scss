@@ -1,0 +1,125 @@
+ion-content { background: var(--bg); }
+ion-toolbar  { background: var(--surface)
+; --border-color: #252a3d; }
+ion-title    { color: var(--text) }
+
+.about {
+  padding: 24px 20px 60px;
+}
+
+.hero {
+  text-align: center;
+  padding: 32px 0 36px;
+
+  .app-icon {
+    font-size: 3.5rem;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Lora', serif;
+    font-size: 1.8rem;
+    color: #e8eaf0;
+    margin: 0 0 8px;
+    letter-spacing: 1px;
+  }
+
+  .tagline {
+    font-size: 0.85rem;
+    color: #7880a0;
+    font-style: italic;
+    margin: 0;
+  }
+}
+
+.section {
+  margin-bottom: 32px;
+  border-top: 1px solid #252a3d;
+  padding-top: 24px;
+
+  h2 {
+    font-size: 0.7rem;
+    color: #5b8dee;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: monospace;
+    margin: 0 0 14px;
+  }
+
+  p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #a0a8c0;
+    margin: 0;
+  }
+
+  .description {
+    font-size: 0.95rem;
+    color: #e8eaf0;
+    line-height: 1.75;
+  }
+
+  .contact {
+    color: #5b8dee;
+  }
+}
+
+.sources {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.source-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+
+    &.science { background: #5b8dee; }
+    &.philo   { background: #a078ff; }
+    &.eco     { background: #50c88c; }
+    &.anime   { background: #f0c040; }
+  }
+
+  .source-name {
+    font-size: 0.85rem;
+    color: #e8eaf0;
+    font-weight: 600;
+  }
+
+  .source-desc {
+    font-size: 0.75rem;
+    color: #7880a0;
+    margin-top: 2px;
+  }
+}
+
+.footer-about {
+  text-align: center;
+  padding-top: 40px;
+  border-top: 1px solid #252a3d;
+
+  .version {
+    font-size: 0.72rem;
+    color: #3a4060;
+    font-family: monospace;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .author {
+    font-size: 0.78rem;
+    color: #7880a0;
+
+    span {
+      color: #f0c040;
+      font-weight: 600;
+    }
+  }
+}

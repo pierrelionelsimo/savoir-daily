@@ -1,27 +1,286 @@
-#container {
-  text-align: center;
+ion-content { background: var(--bg); }
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+.screen {
+  min-height: 100vh;
+  padding: 0 16px 60px;
+  background: radial-gradient(ellipse 80% 40% at 50% -5%, rgba(91,141,238,0.12), transparent);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
+// ── Header ───────────────────────────────────────────────
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 52px 0 24px;
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
+  .app-name {
+    font-family: 'Georgia', serif;
+    font-size: 1.2rem;
+    color: #e8eaf0;
+    letter-spacing: 1px;
+  }
+  .date-sub {
+    font-size: 0.72rem;
+    color: #7880a0;
+    margin-top: 2px;
+    text-transform: capitalize;
+  }
+.nav-btn {
+  font-size: 0.75rem;
+  color: #7880a0;
   text-decoration: none;
+  border: 1px solid #252a3d;
+  padding: 7px 14px;
+  border-radius: 20px;
+  transition: border-color 0.2s;
+
+  &:hover { border-color: #5b8dee; color: #e8eaf0; }
+}
+}
+
+// ── Feed ─────────────────────────────────────────────────
+.section-label {
+  font-size: 0.68rem;
+  color: #7880a0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Inter', monospace;
+  margin-bottom: 16px;
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  padding-top: 40vh;
+}
+
+// ── Card ─────────────────────────────────────────────────
+.card {
+  background: #13161f;
+  border: 1px solid #252a3d;
+  border-radius: 18px;
+  padding: 20px;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
+
+  &:active { transform: scale(0.98); }
+  &:hover  { border-color: #3a4060; }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+
+    .emoji  { font-size: 1.3rem; }
+    .domain {
+      font-size: 0.68rem;
+      color: #5b8dee;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-family: 'Inter', monospace;
+      flex: 1;
+    }
+    .type-badge {
+      font-size: 0.62rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-family: monospace;
+      letter-spacing: 0.5px;
+
+      &[data-type="anime"]    { background: rgba(255,180,50,0.12); color: #f0c040; }
+      &[data-type="arxiv"]    { background: rgba(91,141,238,0.12); color: #5b8dee; }
+      &[data-type="sep"]      { background: rgba(160,120,255,0.12); color: #a078ff; }
+      &[data-type="openalex"] { background: rgba(80,200,140,0.12); color: #50c88c; }
+    }
+  }
+
+  .knowledge {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: #e8eaf0;
+    margin: 0 0 16px;
+  }
+
+  .card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .author {
+      font-size: 0.78rem;
+      color: #f0c040;
+      font-weight: 600;
+    }
+    .share-inline {
+      background: transparent;
+      border: 1px solid #252a3d;
+      color: #7880a0;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s;
+      &:hover { border-color: #5b8dee; color: #5b8dee; }
+    }
+  }
+}
+
+// ── Overlay détail ────────────────────────────────────────
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: flex-end;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.detail-card {
+  background: #13161f;
+  border: 1px solid #252a3d;
+  border-radius: 24px 24px 0 0;
+  padding: 28px 24px 48px;
+  width: 100%;
+  position: relative;
+  animation: slideUp 0.25s ease;
+
+  .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: #252a3d;
+    border: none;
+    color: #7880a0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+
+  .detail-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+
+    .emoji-lg { font-size: 2.2rem; }
+    .detail-domain {
+      font-size: 0.72rem;
+      color: #5b8dee;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: 'Inter', monospace;
+    }
+    .detail-type {
+      font-size: 0.68rem;
+      color: #7880a0;
+      margin-top: 2px;
+    }
+  }
+
+  .detail-knowledge {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #e8eaf0;
+    margin: 0 0 18px;
+    border-left: 2px solid #5b8dee;
+    padding-left: 14px;
+  }
+
+  .detail-resume {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #a0a8c0;
+    margin-bottom: 20px;
+  }
+
+  .detail-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 28px;
+    font-size: 0.8rem;
+
+    .author { color: #f0c040; font-weight: 600; }
+    .dot    { color: #252a3d; }
+    .year   { color: #7880a0; font-family: monospace; }
+  }
+
+  .detail-actions {
+    display: flex;
+    gap: 10px;
+
+    button {
+      flex: 1;
+      padding: 13px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s;
+      &:disabled { opacity: 0.3; cursor: default; }
+    }
+
+    .btn-source {
+      background: #5b8dee;
+      color: #fff;
+      font-weight: 600;
+    }
+    .btn-share {
+      background: #252a3d;
+      color: #e8eaf0;
+    }
+  }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.empty {
+  color: #7880a0;
+  font-style: italic;
+  text-align: center;
+  padding: 40px 0;
+}
+
+// ── Footer ────────────────────────────────────────────────
+.footer {
+  text-align: center;
+  padding: 32px 0 16px;
+  font-size: 0.68rem;
+  color: #3a4060;
+  letter-spacing: 2px;
+  font-family: 'Inter', monospace;
+}
+.theme-btn{
+  background: transparent;
+  border: 1px solid #252a3d;
+  color: #7880a0;
+  border-radius: 20px;
+  padding: 7px 7px;
+  font-size: 0.85rem;
+  transition: border-color 0.2s;
+  height: 50px;
+  width: 50px;
+
+  &:hover { border-color: #5b8dee; color: #2d3242; }
 }

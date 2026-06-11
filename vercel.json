@@ -1,0 +1,7 @@
+{
+  "buildCommand": "ionic build --prod",
+  "outputDirectory": "www",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
